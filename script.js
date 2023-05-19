@@ -10,12 +10,27 @@ const lookup = {
   'Y': 'L','Z': 'M', '?': '?', ',': ','
 };
 
-function rot13(encodedStr){
-   let decodedArr = []; // Your Result goes here
-  // Only change code below this line
 
-  return ;//return decodedArr
+	function rot13(encodedString) {
+  var decodedString = "";
+
+  for (var i = 0; i < encodedString.length; i++) {
+    var charCode = encodedString.charCodeAt(i);
+
+    if (charCode >= 65 && charCode <= 90) { // Uppercase letters
+      decodedString += String.fromCharCode(((charCode - 65 + 13) % 26) + 65);
+    } else if (charCode >= 97 && charCode <= 122) { // Lowercase letters
+      decodedString += String.fromCharCode(((charCode - 97 + 13) % 26) + 97);
+    } else {
+      decodedString += encodedString.charAt(i); // Non-alphabetic characters
+    }
+  }
+
+  return decodedString;
 }
+
+
+
 
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
